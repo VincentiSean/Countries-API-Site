@@ -1,0 +1,1 @@
+ This website integrates with the REST Countries API to pull country data and display the information in a desktop and mobile website.
