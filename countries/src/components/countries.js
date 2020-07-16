@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 class Countries extends Component {
     state = {
         countries: []
-
     }
     
     componentDidMount() {
@@ -65,15 +64,20 @@ class Countries extends Component {
                         </select>
                     </section>
                     {this.state.countries.map((country) => (
-                        <Link key={country.name} to={"/details?" + country.name}>
-                            <div class="card">
-                                <div class="card-body">
-                                    <img class="country-flag" src={country.flag} alt={country.name}/>
-                                    <h4 class="card-title">{country.name}</h4>
-                                    <p class="card-info"><span class="card-info-bold">Population: </span>{country.population}</p>
-                                    <p class="card-info"><span class="card-info-bold">Region: </span>{country.region}</p>
-                                    <p class="card-info"><span class="card-info-bold">Capital: </span>{country.capital}</p>
-                                    <p class="card-info"><span class="card-info-bold">NumericCode: </span>{country.numericCode}</p>
+                        <Link 
+                            key={country.name} 
+                            to={{
+                                pathname: `${country.name}`,
+                                state: { countryToSearch: country.name }
+                        }}>
+                            <div className="card">
+                                <div className="card-body">
+                                    <img className="country-flag" src={country.flag} alt={country.name}/>
+                                    <h4 className="card-title">{country.name}</h4>
+                                    <p className="card-info"><span className="card-info-bold">Population: </span>{country.population}</p>
+                                    <p className="card-info"><span className="card-info-bold">Region: </span>{country.region}</p>
+                                    <p className="card-info"><span className="card-info-bold">Capital: </span>{country.capital}</p>
+                                    <p className="card-info"><span className="card-info-bold">NumericCode: </span>{country.numericCode}</p>
                                 </div>
                             </div>
                         </Link>
@@ -107,6 +111,5 @@ class Countries extends Component {
         
     }
 }
-// = ({ countries }) => {
     
 export default Countries

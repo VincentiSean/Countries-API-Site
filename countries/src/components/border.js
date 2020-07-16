@@ -28,13 +28,7 @@ class Border extends Component {
         if (this.state.country != null) {
             return (
                 <div>
-                    <Link 
-                        key={this.state.country.name} 
-                        to={
-                            "/details"+this.state.country.name
-                        }>
-                        <p>{ this.state.country.name }</p>
-                    </Link>
+                    <a href={"/"+this.state.country.name}>{this.state.country.name}</a>
                 </div>
             )
         } else {
