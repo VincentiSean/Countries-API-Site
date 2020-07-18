@@ -127,7 +127,7 @@ class Countries extends Component {
                             name="countrySearch" 
                             placeholder="Search for a country..."
                             onChange={(e) => this.handleChange(e)} />
-                        <button onClick={this.showMenu}>Filter by region</button>
+                        <button className="filterButton" onClick={this.showMenu}>Filter by region</button>
                         {
                             this.state.showMenu ? (
                             <div 

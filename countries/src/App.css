@@ -1,0 +1,225 @@
+:root {
+  --white: hsl(0, 0%, 100%);
+  --light-gray: hsl(0, 0%, 98%);
+  --dark-gray: hsl(0, 0%, 52%);
+  --dark-blue-lmt: hsl(200, 15%, 8%);
+  --dark-blue-dmbg: hsl(207, 26%, 17%);
+  --dark-blue: hsl(209, 23%, 22%);
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  width: 100vw;
+}
+
+@media only screen and (max-width: 450px) {
+  
+  #app-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 80px;
+    width: 100vw;
+    background-color: var(--white);
+  }
+
+  #app-header h3 {
+    font-weight: 900;
+    margin-left: 20px;
+  }
+
+  #app-header button {
+    background-color: var(--white);
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    height: 25px;
+    margin: 20px 20px 0 0;
+    width: 110px;
+  }
+
+  .fa-moon {
+    font-weight: 500;
+    margin-left: -5px;
+    margin-right: 10px;
+  }
+
+  #main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    height: auto;
+    width: 100vw;
+  }
+
+  #countries-container {
+    background-color: var(--light-gray);
+    display: grid;
+    grid-template-columns: 1fr;
+
+    height: auto;
+    width: 100vw;
+  }
+
+  #search-section {
+    background-color: var(--light-gray);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    position: relative;
+    height: 150px;
+    width: 100vw;
+  }
+
+  input[type=text] {
+    background-color: var(--white);
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+    height: 45px;
+    letter-spacing: 0.5px;
+    margin-left: 5vw;
+    outline: none;
+    padding: 10px;
+    text-indent: 35px;
+    width: 90vw;
+  }
+
+  input[type=text]::placeholder {
+    color: #bbb;
+  }
+
+  #custom-select {
+    position: relative;
+  }
+
+  #custom-select select {
+    /* background-color: var(--white);
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: var(--dark-blue-lmt);
+    font-size: 14px;
+    height: 45px;
+    letter-spacing: 0.5px;
+    margin-top: 30px;
+    margin-left: 5vw;
+    padding: 10px;
+    width: 45vw; */
+    display: none;
+  }
+
+  .select-selected {
+    background-color: var(--dark-blue-dmbg);
+    color: var(--light-gray);
+  }
+
+  .select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: var(--white) transparent transparent transparent;
+  }
+
+  .select-selected.select-arrow:after {
+    border-color: transparent transparent var(--white) transparent;
+    top: 7px;
+  }
+
+  .select-items div, .select-selected {
+    color: var(--dark-blue-lmt);
+    padding: 8px 16px;
+    cursor: pointer;
+  }
+
+  .select-items {
+    position: absolute;
+    background-color: var(--white);
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 10;
+  }
+
+  .select-hide {
+    display: none;
+  }
+
+  .select-item div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  .filterButton {
+    background-color: var(--white);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+    color: var(--dark-blue-lmt);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 400;
+    height: 45px;
+    margin-top: 20px;
+    margin-left: 5vw;
+    outline: none;
+    padding: 10px;
+    text-align: left;
+    text-indent: 20px;
+    width: 50vw;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+
+    background-color: var(--white);
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: absolute;
+    top: 130px;
+    left: 5vw;
+    width: 50vw;
+    z-index: 10;
+  }
+
+  .menu:first-child {
+    padding-top: 10px;
+  }
+
+  .menu button {
+    background-color: var(--white);
+    border: none;
+    box-sizing: border-box;
+    color: var(--dark-blue-lmt);
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+    padding: 5px;
+    text-align: left;
+    text-indent: 20px;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
