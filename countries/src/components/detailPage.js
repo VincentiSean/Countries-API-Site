@@ -31,53 +31,62 @@ class Details extends Component {
                         <div className="button-holder">
                             <BackButton />
                         </div>
-                        <div className="country-container">
+                        <div className="detail-container">
                             <img className="country-flag-detail" src={country.flag} alt={"Flag of " + country.name}/>
-                            <h4 className="card-title">{ country.name }</h4>
-                            <p className="separator card-info"><span className="card-info-bold">Native Name: </span>{country.nativeName}</p>
-                            <p className="card-info"><span className="card-info-bold">Population: </span>{country.population}</p>
-                            <p className="card-info"><span className="card-info-bold">Region: </span>{country.region}</p>
-                            <p className="card-info"><span className="card-info-bold">Sub Region: </span>{country.subregion}</p>
-                            <p className="card-info"><span className="card-info-bold">Capital: </span>{country.capital}</p>
-                            <p className="card-info"><span className="card-info-bold">NumericCode: </span>{country.numericCode}</p>
+                            <h4 className="card-title-detail">{ country.name }</h4>
+                            <p className="separator card-info-detail"><span className="card-info-detail-bold">Native Name: </span>{country.nativeName}</p>
+                            <p className="card-info-detail"><span className="card-info-detail-bold">Population: </span>{country.population}</p>
+                            <p className="card-info-detail"><span className="card-info-detail-bold">Region: </span>{country.region}</p>
+                            <p className="card-info-detail"><span className="card-info-detail-bold">Sub Region: </span>{country.subregion}</p>
+                            <p className="card-info-detail"><span className="card-info-detail-bold">Capital: </span>{country.capital}</p>
+                            <p className="card-info-detail"><span className="card-info-detail-bold">NumericCode: </span>{country.numericCode}</p>
 
-                            <p className="separator card-info">
-                                <span className="card-info-bold">
+                            <p className="separator card-info-detail">
+                                <span className="card-info-detail-bold rmarg">
                                     Top Level Domain: 
                                 </span>
                                 {country.topLevelDomain}
                             </p>
-                            <span className="card-info-bold">
-                                Currencies: 
-                            </span>
-                            
-                            {country.currencies.map((currency) => {
-                                return (
-                                    <p key={currency.name} className="listed-value">
-                                        {currency.name}
-                                    </p>
-                                )
-                            })}
+                            <div className="dynamic-container">
+                                <span className="card-info-detail-bold">
+                                    Currencies: 
+                                </span>
                                 
-                            <span className="card-info-bold">
-                                Languages: 
-                            </span>
-                            
-                            {country.languages.map((language) => {
-                                return (
-                                    <p key={language.name} className="listed-value">
-                                        {language.name}
-                                    </p>
-                                )
-                            })}
+                                {country.currencies.map((currency) => {
+                                    return (
+                                        <p key={currency.name} className="listed-value">
+                                            {currency.name}
+                                        </p>
+                                    )
+                                })}
+                            </div>
+                                
+                            <div className="bottom dynamic-container">
+                                <span className="card-info-detail-bold">
+                                    Languages: 
+                                </span>
+                                
+                                {country.languages.map((language) => {
+                                    return (
+                                        <p key={language.name} className="listed-value">
+                                            {language.name}
+                                        </p>
+                                    )
+                                })}
+                            </div>
 
                             <h5 className="border">Border Countries</h5>
                             {country.borders.map((border) => {
-                                return (
-                                    <Border key={border}>
-                                        { border }
-                                    </Border>
-                                )
+                                if (country.border !== null) {
+                                    return (
+                                        <Border key={border}>
+                                            { border }
+                                        </Border>
+                                    )
+                                    
+                                } else {
+                                    return(<h6>There are no bordering countries</h6>)
+                                }
                             })}
                         </div>
                     </div>

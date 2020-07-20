@@ -1,43 +1,5 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import styled from 'styled-components';
-
-// const DropDownContainer = styled("div")`
-//     background: var(--white);
-//     box-sizing: border-box;
-//     font-family: 'Nunito Sans', sans-serif;
-//     margin-top: 20px;
-//     margin-left: 5vw;
-//     width: 50vw;
-// `;
-
-// const DropDownHeader = styled("div")`
-//     background-color: var(--white);
-//     border-radius: 5px;
-//     box-shadow: 0 2px 3px rgba(0, 0, 0, 0.15);
-//     color: var(----dark-blue-lmt);
-//     font-size: 14px;
-//     font-weight: 400;
-//     padding: 10px;
-// `;
-
-// const DropDownListContainer = styled("div")``;
-
-// const DropDownList = styled("ul")`
-//     background-color: var(--white);
-//     border-radius: 5px;
-//     box-sizing: border-box;
-//     color: var(--dark-blue-lmt);
-//     font-size: 14px;
-//     font-weight: 400;
-//     margin: 0;
-//     padding: 0;
-// `;
-
-// const ListItem = styled("li")`
-//     list-style: none;
-//     margin-bottom: 10px;
-// `;
 
 class Countries extends Component {
     constructor() {
@@ -116,8 +78,6 @@ class Countries extends Component {
     }
 
     render() {
-        
-
         if (Array.isArray(this.state.countries)) {
             return(
                 <div id="countries-container">
@@ -127,90 +87,92 @@ class Countries extends Component {
                             name="countrySearch" 
                             placeholder="Search for a country..."
                             onChange={(e) => this.handleChange(e)} />
-                        <button className="filterButton" onClick={this.showMenu}>Filter by region</button>
-                        {
-                            this.state.showMenu ? (
-                            <div 
-                                className="menu"
-                                ref={(element) => {
-                                    this.dropdownMenu = element;
-                                }}>
-                                <button ref={(element) => {
-                                    this.africa = element;
-                                }}>
-                                    Africa
-                                </button>
-                                <button ref={(element) => {
-                                    this.america = element;
-                                }}>
-                                    Americas
-                                </button>
-                                <button ref={(element) => {
-                                    this.asia = element;
-                                }}>
-                                    Asia
-                                </button>
-                                <button ref={(element) => {
-                                    this.europe = element;
-                                }}>
-                                    Europe
-                                </button>
-                                <button ref={(element) => {
-                                    this.oceania = element;
-                                }}>
-                                    Oceania
-                                </button>
-                            </div>
-                            )
-                            : (
-                                null
-                            )
-                        }
-                        
-                        {/* <DropDownContainer>
-                            <DropDownHeader onClick={toggling}>Filter by Region</DropDownHeader>
-                            {isOpen && (
-                                <DropDownListContainer>
-                                    <DropDownList>
-                                        <ListItem>Africa</ListItem>
-                                        <ListItem>Americas</ListItem>
-                                        <ListItem>Asia</ListItem>
-                                        <ListItem>Europe</ListItem>
-                                        <ListItem>Oceania</ListItem>
-                                    </DropDownList>
-                                </DropDownListContainer>
-                            )}
-                        </DropDownContainer> */}
-                        {/* <div id="custom-select">
-                            <select name="regionFilter" onChange={(e) => this.selectFilter(e)}>
-                                <option value="" disabled selected hidden>Filter by Region</option>
-                                <option value="Africa">Africa</option>
-                                <option value="Americas">Americas</option>
-                                <option value="Asia">Asia</option>
-                                <option value="Europe">Europe</option>
-                                <option value="Oceania">Oceania</option>
-                            </select>
-                        </div> */}
-                    </section>
-                    {this.state.countries.map((country) => (
-                        <Link 
-                            key={country.name} 
-                            to={{
-                                pathname: `${country.name}`,
-                                state: { countryToSearch: country.name }
-                        }}>
-                            <div className="card">
-                                <div className="card-body">
-                                    <img className="country-flag" src={country.flag} alt={country.name}/>
-                                    <h4 className="card-title">{country.name}</h4>
-                                    <p className="card-info"><span className="card-info-bold">Population: </span>{country.population}</p>
-                                    <p className="card-info"><span className="card-info-bold">Region: </span>{country.region}</p>
-                                    <p className="card-info"><span className="card-info-bold">Capital: </span>{country.capital}</p>
-                                    <p className="card-info"><span className="card-info-bold">NumericCode: </span>{country.numericCode}</p>
+                        <div id="filter-container">
+                            <button className="filterButton" onClick={this.showMenu}>Filter by region</button>
+                            {
+                                this.state.showMenu ? (
+                                <div 
+                                    className="menu"
+                                    ref={(element) => {
+                                        this.dropdownMenu = element;
+                                    }}>
+                                    <button ref={(element) => {
+                                        this.africa = element;
+                                    }}>
+                                        Africa
+                                    </button>
+                                    <button ref={(element) => {
+                                        this.america = element;
+                                    }}>
+                                        Americas
+                                    </button>
+                                    <button ref={(element) => {
+                                        this.asia = element;
+                                    }}>
+                                        Asia
+                                    </button>
+                                    <button ref={(element) => {
+                                        this.europe = element;
+                                    }}>
+                                        Europe
+                                    </button>
+                                    <button ref={(element) => {
+                                        this.oceania = element;
+                                    }}>
+                                        Oceania
+                                    </button>
                                 </div>
-                            </div>
-                        </Link>
-                    ))}
+                                )
+                                : (
+                                    null
+                                )
+                            }
+                        </div>
+                    </section>
+                    <div id="grid-container">
+                        {this.state.countries.map((country) => (
+                            <Link 
+                                key={country.name} 
+                                to={{
+                                    pathname: `${country.name}`,
+                                    state: { countryToSearch: country.name }
+                            }}>
+                                <div className="card">
+                                    <div className="card-body">
+                                        <img className="country-flag" src={country.flag} alt={country.name}/>
+                                        <h4 className="card-title">
+                                            {country.name}
+                                        </h4>
+                                        <p className="card-info">
+                                            <span className="card-info-bold">
+                                                Population: 
+                                            </span>
+                                            {country.population}
+                                        </p>
+                                        <p className="card-info">
+                                            <span className="card-info-bold">
+                                                Region: 
+                                            </span>
+                                            {country.region}
+                                        </p>
+                                        <p className="card-info">
+                                            <span className="card-info-bold">
+                                                Capital: 
+                                            </span>
+                                            {country.capital}
+                                        </p>
+                                        {/* <p className="card-info">
+                                            <span className="card-info-bold">
+                                                NumericCode: 
+                                            </span>
+                                            {country.numericCode}
+                                        </p> */}
+                                    </div>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                    
                 </div>              
             )
         } else {
