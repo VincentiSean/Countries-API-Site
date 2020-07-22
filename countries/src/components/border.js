@@ -15,8 +15,8 @@ class Border extends Component {
 
     fetchCountry() {
         let name = this.props.children;
-        fetch('https://restcountries.eu/rest/v2/alpha/'+name) // Make GET request to API
-        .then(res => res.json())  // Parse json
+        fetch('https://restcountries.eu/rest/v2/alpha/'+name)   // Make GET request to API
+        .then(res => res.json())                                // Parse json
         .then((data) => {
             this.setState({ country: data })
         })
@@ -27,7 +27,7 @@ class Border extends Component {
         if (this.state.country != null) {
             return (
                 <div>
-                    <a href={"/"+this.state.country.name}>{this.state.country.name}</a>
+                    <a href={"/"+this.state.country.name}>{this.state.country.name.replace(/ *\([^)]*\) */g, "")}</a> {/* Get rid of anything in between and including parenthesis */}
                 </div>
             )
         } else {

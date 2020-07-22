@@ -10,25 +10,37 @@
     />
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css" integrity="sha384-xxzQGERXS00kBmZW/6qxqJPyxW3UR0BPsL4c8ILaIWXva5kFi7TxkIIaMiKtqV1Q" crossorigin="anonymous">
-    <link rel="stylesheet" href="./src/app.css" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
+    <link rel="stylesheet" type="text/css" href="./src/app.css" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
     <title>Where in the world?</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <script>
+      window.onload = function() {
+        let toggle = false;
+        darkButton = document.getElementById("dark-mode");
+        darkButton.onclick = function() {
+          toggle = !toggle;
+          if (toggle) {
+            document.documentElement.style.setProperty('--white', 'hsl(209, 23%, 22%)');
+            document.documentElement.style.setProperty('--light-gray', 'hsl(207, 26%, 17%)');
+            document.documentElement.style.setProperty('--dark-gray', 'hsl(0, 0%, 100%)');
+            document.documentElement.style.setProperty('--dark-blue-lmt', 'hsl(0, 0%, 100%)');
+            document.documentElement.style.setProperty('--shadow-main', 'rgba(30,30,30,1)');
+            document.documentElement.style.setProperty('--shadow-inputs', 'rgba(30,30,30,1)');
+          } else {
+            document.documentElement.style.setProperty('--white', 'hsl(0, 0%, 100%)');
+            document.documentElement.style.setProperty('--light-gray', 'hsl(0, 0%, 98%)');
+            document.documentElement.style.setProperty('--dark-gray', 'hsl(0, 0%, 52%)');
+            document.documentElement.style.setProperty('--dark-blue-lmt', 'hsl(200, 15%, 18%)');
+            document.documentElement.style.setProperty('--shadow-main', 'rgba(200,200,200, 1)');
+            document.documentElement.style.setProperty('--shadow-inputs', 'rgba(0,0,0,.15');
+          }
+        }
+      }
+    </script>
   </body>
 </html>

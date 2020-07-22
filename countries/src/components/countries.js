@@ -82,13 +82,25 @@ class Countries extends Component {
             return(
                 <div id="countries-container">
                     <section id="search-section">
-                        <input 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z"/>
+                        <circle cx="10" cy="10" r="7" />
+                        <line x1="21" y1="21" x2="15" y2="15" />
+                    </svg>
+                        <input
+                            id="search-box" 
                             type="text" 
                             name="countrySearch" 
                             placeholder="Search for a country..."
                             onChange={(e) => this.handleChange(e)} />
                         <div id="filter-container">
-                            <button className="filterButton" onClick={this.showMenu}>Filter by region</button>
+                            <button className="filterButton" onClick={this.showMenu}>
+                                Filter by region
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-chevron-down" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z"/>
+                                    <polyline points="6 9 12 15 18 9" />
+                                </svg>
+                            </button>
                             {
                                 this.state.showMenu ? (
                                 <div 
@@ -141,7 +153,7 @@ class Countries extends Component {
                                     <div className="card-body">
                                         <img className="country-flag" src={country.flag} alt={country.name}/>
                                         <h4 className="card-title">
-                                            {country.name}
+                                            {country.name.replace(/ *\([^)]*\) */g, "")}
                                         </h4>
                                         <p className="card-info">
                                             <span className="card-info-bold">
@@ -161,12 +173,6 @@ class Countries extends Component {
                                             </span>
                                             {country.capital}
                                         </p>
-                                        {/* <p className="card-info">
-                                            <span className="card-info-bold">
-                                                NumericCode: 
-                                            </span>
-                                            {country.numericCode}
-                                        </p> */}
                                     </div>
                                 </div>
                             </Link>
@@ -179,21 +185,52 @@ class Countries extends Component {
             return(
                 <div>
                     <section id="search-section">
-                        <form id="search-form">
                         <input 
                             type="text" 
                             name="countrySearch" 
                             placeholder="Search for a country..."
                             onChange={(e) => this.handleChange(e)} />
-                        <select name="regionFilter">
-                            <option value="" disabled selected hidden>Filter by Region</option>
-                            <option value="Africa">Africa</option>
-                            <option value="America">America</option>
-                            <option value="Asia">Asia</option>
-                            <option value="Europe">Europe</option>
-                            <option value="Oceania">Oceania</option>
-                        </select>
-                        </form>
+                        <div id="filter-container">
+                            <button className="filterButton" onClick={this.showMenu}>Filter by region</button>
+                            {
+                                this.state.showMenu ? (
+                                <div 
+                                    className="menu"
+                                    ref={(element) => {
+                                        this.dropdownMenu = element;
+                                    }}>
+                                    <button ref={(element) => {
+                                        this.africa = element;
+                                    }}>
+                                        Africa
+                                    </button>
+                                    <button ref={(element) => {
+                                        this.america = element;
+                                    }}>
+                                        Americas
+                                    </button>
+                                    <button ref={(element) => {
+                                        this.asia = element;
+                                    }}>
+                                        Asia
+                                    </button>
+                                    <button ref={(element) => {
+                                        this.europe = element;
+                                    }}>
+                                        Europe
+                                    </button>
+                                    <button ref={(element) => {
+                                        this.oceania = element;
+                                    }}>
+                                        Oceania
+                                    </button>
+                                </div>
+                                )
+                                : (
+                                    null
+                                )
+                            }
+                        </div>
                     </section>
                     <h3>No countries match the search.</h3>
                 </div>              

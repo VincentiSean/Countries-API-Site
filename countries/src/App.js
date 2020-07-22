@@ -16,7 +16,7 @@ class App extends Component {
         <div id="app">
           <header id="app-header">
             <h3>Where in the world?</h3>
-            <button><i className="far fa-moon"></i>Dark Mode</button>
+            <button id="dark-mode"><i className="far fa-moon"></i>Dark Mode</button>
           </header>
           <section id="main-content">
             <Switch>
